@@ -1,4 +1,3 @@
-const DICTIONARY = ["Ameow", "test"];  // XXX TODO Get free to use dictionary of words?
 let SELECTED_WORD = "";
 
 
@@ -10,13 +9,13 @@ userInput.addEventListener("input", event => {
 
 
 class Text {
-    constructor(ctx, canvas) {
+    constructor(ctx, canvas, dictionary) {
         this.ctx = ctx;
         this.canvas = canvas;
         this.fontSize = 12;
         this.color = "blue";
         this.highlightColor = "green";
-        this.text = this.getRandomWord();
+        this.text = this.getRandomWord(dictionary);
         this.font = `${this.fontSize}px sans serif`;
         this.ctx.font = this.font;
         this.ctx.fillStyle = this.color;
@@ -43,8 +42,11 @@ class Text {
         this.x = getRandomInt(this.canvas.width - this.wordWidth);
     }
 
-    getRandomWord() {
-        return DICTIONARY[getRandomInt(DICTIONARY.length)];
+    getRandomWord(dictionary) {
+        if (dictionary.length === 0) {
+            return "Error";  // Backup word
+        }
+        return dictionary[getRandomInt(dictionary.length)];
     }
 
     getImageMap() {
@@ -82,7 +84,12 @@ class Text {
 
     clear() {
         // Clear text from screen
-        this.ctx.clearRect(this.x, this.y - this.wordHeight + 1, this.wordWidth, this.wordHeight); // clear canvas
+        this.ctx.clearRect(
+            this.x - 1,
+            this.y - this.wordHeight + 1,
+            this.wordWidth + 2,
+            this.wordHeight + 2,
+        ); // clear canvas
     }
 
     jiggerX() {

@@ -1,0 +1,51 @@
+body {
+    margin: 0px 0px;
+}
+
+#canvas {
+    width: 100vw;
+    height: 95vh;
+    margin: 0px 0px;
+}
+
+#userInputContainer {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+}
+
+#userInput {
+    margin-left: auto;
+}
+
+#scoreContainer {
+    color: red;
+}
+
+#levelContainer {
+    color: green;
+    margin-right: 1vw;
+}
+
+#dataContainer {
+    margin-left: auto;
+    margin-right: 1vw;
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: lightgray;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+    }
+    
+    /* TODO */
+    /* #userInput {
+        background-color: black;
+        color: white;
+    } */
+}
